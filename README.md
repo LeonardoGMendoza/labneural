@@ -22,10 +22,10 @@ Laboratório para aprender redes neurais mexendo nelas, com uma professora de IA
 cd backend
 cp .env.example .env      # preencha com a mesma conta Oracle/Azure do StudentMedical
 docker build -t labneural-api .
-docker run -d --name labneural-api --restart unless-stopped -p 8010:8000 --env-file .env -v labneural-dados:/data labneural-api
-curl http://localhost:8010/api/saude
+docker run -d --name labneural-api --restart unless-stopped -p 127.0.0.1:8040:8000 --env-file .env -v labneural-dados:/data labneural-api
+curl http://localhost:8040/api/saude
 ```
-Depois aponte `labneural.sandlj.com.br` para a porta 8010 no proxy reverso da VPS (do mesmo jeito que os outros subdomínios).
+Depois aponte `labneural.sandlj.com.br` para a porta 8040 no Nginx da VPS (do mesmo jeito que os outros subdomínios).
 
 Testar no PC: `cd backend && pip install -r requirements.txt && uvicorn app.main:app --port 8000` e abra o site com `?api=http://localhost:8000`.
 
