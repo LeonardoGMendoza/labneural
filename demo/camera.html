@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LabNeural · Câmera</title>
+<meta name="description" content="A câmera do celular reconhece objetos de verdade e fala o que está vendo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{--bg:#111614;--paper:#18201d;--ink:#e6ece9;--muted:#97a39e;--line:#2c3632;--signal:#3fc59f;--error:#ef7b62;--display:"Bricolage Grotesque",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--body);padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}.wrap{gap:14px;max-width:900px;margin:0 auto;display:grid}a{color:var(--signal)}.topo{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;display:flex}h1{font:700 1.6rem/1.1 var(--display);margin:0}h1 span{color:var(--signal)}.tag{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}p{color:var(--muted);max-width:62ch;margin:0}.palco{border:1px solid var(--line);background:#000;border-radius:14px;min-height:200px;position:relative;overflow:hidden}video{width:100%;height:auto;display:block}#tela{width:100%;height:100%;position:absolute;top:0;bottom:0;left:0;right:0}.btns{flex-wrap:wrap;align-items:center;gap:8px;display:flex}button{font:600 1rem var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:10px;min-height:48px;padding:.75rem 1.1rem}button.prim{background:var(--signal);border-color:var(--signal);color:#06231b}button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}input:focus-visible{outline:2px solid var(--signal);outline-offset:2px}.ctrl{color:var(--muted);align-items:center;gap:10px;font-size:.9rem;display:flex}.ctrl input{accent-color:var(--signal);width:140px}.status{font:.88rem var(--mono);color:var(--muted)}.lista{gap:6px;margin:0;padding:0;list-style:none;display:grid}.lista li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:.55rem .8rem}.lista b{color:var(--ink)}.legenda{font:.8rem var(--mono);color:var(--muted);flex-wrap:wrap;gap:14px;display:flex}.legenda i{vertical-align:-1px;border-radius:3px;width:12px;height:12px;margin-right:5px;display:inline-block}.aviso{border-left:3px solid var(--error);background:var(--paper);color:var(--muted);padding:.6rem .8rem;font-size:.88rem}</style>
+  <script type="module" crossorigin src="./assets/camera-CmIeFYkM.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-P2Xu9kJm.js">
+</head>
+<body>
+<div class="wrap">
+  <div class="topo">
+    <div>
+      <div class="tag">Mundo real</div>
+      <h1>Lab<span>Neural</span> · Câmera</h1>
+    </div>
+    <a href="./index.html">← Voltar às lições</a>
+  </div>
+  <p>Uma rede neural de verdade, treinada com mais de 300 mil fotos reais (COCO-SSD, do Google), roda aqui dentro do seu celular. Ela reconhece 80 tipos de objetos ao vivo e diz o que está vendo e onde. É a mesma ideia dos carros autônomos e do app para quem não enxerga.</p>
+
+  <div class="palco">
+    <video id="video" playsinline muted></video>
+    <canvas id="tela"></canvas>
+  </div>
+
+  <div class="btns">
+    <button class="prim" id="btnLigar">Ligar câmera</button>
+    <button id="btnParar" hidden>Parar</button>
+    <button id="btnVoz" aria-pressed="true">Voz ligada</button>
+  </div>
+  <div class="status" id="status" aria-live="polite">Toque em Ligar câmera. No celular, use a câmera de trás.</div>
+  <div class="ctrl"><label for="limiar">Só mostrar com certeza acima de</label><input type="range" id="limiar" min="20" max="90" step="5" value="50"><output id="limiarOut">50%</output></div>
+  <div class="legenda"><span><i style="background:#ef4444"></i>muito perto</span><span><i style="background:#f59e0b"></i>perto</span><span><i style="background:#22c55e"></i>longe</span><span id="fps"></span></div>
+
+  <ul class="lista" id="lista" aria-live="polite"><li>Nada reconhecido ainda</li></ul>
+
+  <div class="aviso">Protótipo de estudo. "Perto" e "longe" são estimados pelo tamanho do objeto na imagem, não medidos. Não substitui bengala, cão-guia nem a atenção no trânsito.</div>
+</div>
+<script>
+(function(){window.addEventListener('error',function(e){var s=document.getElementById('status');if(s)s.textContent='Erro: '+(e.message||'');});
+window.addEventListener('unhandledrejection',function(e){var s=document.getElementById('status');if(s)s.textContent='Erro: '+String(e.reason&&e.reason.message||e.reason);});})();
+</script>
+</body>
+</html>
