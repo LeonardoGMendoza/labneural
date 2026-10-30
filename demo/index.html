@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LabNeural</title>
+<meta name="description" content="Aprenda redes neurais mexendo nelas, com uma professora de IA que fala com você.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{--bg:#f3f5f4;--paper:#fff;--ink:#18201d;--muted:#5b6762;--line:#d6ddd9;--signal:#0c7a62;--signal-soft:#dcefe8;--error:#c2452d;--error-soft:#f8e3dd;--grid:#e7ece9;--display:"Bricolage Grotesque",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#111614;--paper:#18201d;--ink:#e6ece9;--muted:#97a39e;--line:#2c3632;--signal:#3fc59f;--signal-soft:#16352c;--error:#ef7b62;--error-soft:#3a1f19;--grid:#222b28;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}}:root[data-theme=dark]{--bg:#111614;--paper:#18201d;--ink:#e6ece9;--muted:#97a39e;--line:#2c3632;--signal:#3fc59f;--signal-soft:#16352c;--error:#ef7b62;--error-soft:#3a1f19;--grid:#222b28;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block-start:0;padding-block-end:4rem}.wrap{max-width:1040px;margin:0 auto}header{gap:.75rem;padding-block-start:3rem;padding-block-end:2rem;display:grid}.brand{font:700 clamp(2.4rem,6vw,3.6rem)/1 var(--display);letter-spacing:-.02em;margin:0}.brand span{color:var(--signal)}.lede{max-width:62ch;color:var(--muted);margin:0;font-size:1.05rem}nav{flex-wrap:wrap;gap:.5rem;margin-top:.5rem;display:flex}nav a{font:500 .85rem var(--mono);color:var(--ink);border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.35rem .75rem;text-decoration:none}nav a:hover{border-color:var(--signal);color:var(--signal);outline:none}nav a:focus-visible{border-color:var(--signal);color:var(--signal);outline:none}section.licao{background:var(--paper);border:1px solid var(--line);border-radius:14px;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem;margin-top:1.5rem;padding:1.75rem;display:grid}@media (max-width:820px){section.licao{grid-template-columns:minmax(0,1fr);padding:1.25rem}}.tag{font:500 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}h2{font:700 1.7rem/1.15 var(--display);text-wrap:balance;margin:.25rem 0 .75rem}.teoria p{max-width:58ch;margin:0 0 .85rem}.teoria code,.mono{font-family:var(--mono);font-size:.88em}.desafio{border-left:3px solid var(--signal);background:var(--signal-soft);margin-top:1rem;padding:.6rem .9rem;font-size:.95rem}.desafio b{font-weight:600}.lab{align-content:start;gap:1rem;min-width:0;display:grid}.ctrl{grid-template-columns:7.5rem minmax(0,1fr) 3.5rem;align-items:center;gap:.75rem;font-size:.92rem;display:grid}.ctrl label{color:var(--muted)}.ctrl output{font:500 .9rem var(--mono);text-align:right;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:var(--signal)}select{font:inherit;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:.35rem .5rem}.btns{flex-wrap:wrap;align-items:center;gap:.5rem;display:flex}button{font:500 .9rem var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:8px;padding:.5rem .95rem}button.prim{background:var(--signal);border-color:var(--signal);color:var(--paper)}button:hover{border-color:var(--signal)}button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}select:focus-visible{outline:2px solid var(--signal);outline-offset:2px}input:focus-visible{outline:2px solid var(--signal);outline-offset:2px}.status{font:.85rem var(--mono);color:var(--muted)}.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font:.88rem var(--mono);font-variant-numeric:tabular-nums}th{font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;border-bottom:1px solid var(--line);padding:.4rem .5rem}td{border-bottom:1px solid var(--grid);padding:.4rem .5rem}.ok{color:var(--signal);font-weight:500}.err{color:var(--error);font-weight:500}.chart{border:1px solid var(--grid);border-radius:8px;width:100%;height:140px;display:block}.cap{font:.75rem var(--mono);color:var(--muted);margin-top:-.6rem}.resposta{border:1px solid var(--line);border-radius:10px;gap:.25rem;padding:1rem;display:grid}.resposta .big{font:700 2rem/1 var(--display);font-variant-numeric:tabular-nums}.fala{font-size:1.05rem}.fala.alerta{color:var(--error)}.placar{font:.85rem var(--mono);color:var(--muted);flex-wrap:wrap;gap:1.5rem;display:flex}.placar b{color:var(--ink);font-weight:500}.vis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;display:grid}.vis figure{gap:.35rem;min-width:0;margin:0;display:grid}.vis canvas{aspect-ratio:1;border:1px solid var(--grid);background:var(--paper);border-radius:8px;width:100%;max-width:100%;display:block}.vis figcaption,.legenda{font:.75rem var(--mono);color:var(--muted)}.faixa{border:1px solid var(--grid);border-radius:8px;width:100%;height:120px;display:block}.leg{align-items:center;gap:.3rem;margin-right:.8rem;display:inline-flex}.leg i{width:14px;height:3px;display:inline-block}.quadro{aspect-ratio:1;border:1.5px solid var(--ink);background:var(--paper);touch-action:none;cursor:crosshair;border-radius:10px;width:100%;max-width:280px;display:block}.dupla{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));align-items:start;gap:1rem;display:grid}.barras{gap:.5rem;display:grid}.barra{grid-template-columns:5.5rem minmax(0,1fr) 3rem;align-items:center;gap:.5rem;font-size:.9rem;display:grid}.barra .trilho{background:var(--grid);border-radius:4px;height:14px;overflow:hidden}.barra .enche{background:var(--muted);width:0;height:100%}.barra.top .enche{background:var(--signal)}.barra output{font:.85rem var(--mono);text-align:right;font-variant-numeric:tabular-nums}.filtros{grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;display:grid}.filtros canvas{aspect-ratio:1;width:100%;image-rendering:pixelated;border-radius:3px;display:block}.mini{width:64px;height:64px;image-rendering:pixelated;border:1px solid var(--grid);border-radius:4px}footer{color:var(--muted);margin-top:2rem;font-size:.85rem}.app{grid-template-columns:minmax(0,1fr) 360px;align-items:start;gap:24px;max-width:1460px;margin:0 auto;display:grid}.app .wrap{width:100%;min-width:0;max-width:1040px;margin:0 auto}.ouvir{border-color:var(--signal);color:var(--signal);border-radius:999px;margin:-.25rem 0 .9rem;padding:.35rem .8rem;font-size:.85rem}.prof-card{background:var(--paper);border:1px solid var(--line);z-index:20;border-radius:16px;grid-template-rows:auto auto;margin-top:16px;display:grid;position:sticky;top:16px;overflow:hidden}.prof-video{background:linear-gradient(180deg,var(--signal-soft),var(--grid));height:300px;position:relative}.prof-video #prof{position:absolute;top:0;bottom:0;left:0;right:0}.prof-status{text-align:center;font:.8rem var(--mono);color:var(--muted);pointer-events:none;position:absolute;top:auto;bottom:45%;left:0;right:0}.prof-nome{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--paper);border:1px solid var(--line);z-index:2;border-radius:999px;padding:.2rem .55rem;position:absolute;top:10px;left:10px}.prof-corpo{gap:.6rem;padding:.9rem;display:grid}.balao{background:var(--bg);border:1px solid var(--line);border-radius:12px;max-height:9.5rem;padding:.7rem .8rem;font-size:.95rem;overflow:auto}#formPerg{gap:.4rem;display:flex}#formPerg input{min-width:0;font:inherit;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;flex:1;padding:.45rem .6rem}.prof-acoes{flex-wrap:wrap;align-items:center;gap:.4rem;display:flex}.mic{background:var(--signal);border-color:var(--signal);width:46px;height:46px;color:var(--paper);border-radius:50%;place-items:center;padding:0;display:grid}.mic svg{width:22px;height:22px}.mic[data-estado=ouvindo]{background:var(--error);border-color:var(--error);animation:1.2s ease-in-out infinite pulsa}.mic[data-estado=pensando]{opacity:.6}@keyframes pulsa{0%,to{box-shadow:0 0 0 0 var(--error-soft)}50%{box-shadow:0 0 0 10px #0000}}#btnComecar{flex:1}.leve{color:var(--muted);padding:.35rem .6rem;font-size:.8rem}#btnRecolher{display:none}@media (max-width:1100px){.app{grid-template-columns:minmax(0,1fr)}body{padding-bottom:calc(220px + env(safe-area-inset-bottom,0px))}.prof-card{left:max(8px,env(safe-area-inset-left,0px));right:max(8px,env(safe-area-inset-right,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));grid-template-rows:auto;grid-template-columns:130px minmax(0,1fr);margin:0;position:fixed;top:auto;box-shadow:0 10px 30px #0000002e}.prof-video{height:auto;min-height:190px}.prof-corpo{padding:.6rem}.balao{max-height:5.2rem;font-size:.88rem}#btnRecolher{display:inline-block}.prof-card[data-recolhido="1"]{grid-template-columns:70px minmax(0,1fr)}.prof-card[data-recolhido="1"] .prof-video{min-height:70px}.prof-card[data-recolhido="1"] .balao,.prof-card[data-recolhido="1"] #formPerg,.prof-card[data-recolhido="1"] #btnTrocarProf,.prof-card[data-recolhido="1"] .prof-nome{display:none}}@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}</style>
+  <script type="module" crossorigin src="./assets/index-D_Sv4cgK.js"></script>
+</head>
+<body>
+<div class="app">
+<div class="wrap">
+<header>
+  <div class="tag">Laboratório de redes neurais</div>
+  <h1 class="brand">Lab<span>Neural</span></h1>
+  <p class="lede">Aprenda como uma rede neural aprende mexendo nela. Cada lição tem uma explicação curta, um experimento para você testar e um desafio, e uma professora de IA explica tudo em voz alta, reage ao que você faz e responde suas perguntas.</p>
+  <nav aria-label="Lições">
+    <a href="#licao-1">1 · Um neurônio</a>
+    <a href="#licao-2">2 · Camada oculta</a>
+    <a href="#licao-3">3 · Aviso de obstáculo</a>
+    <a href="#licao-4">4 · Reconhecer imagens</a>
+  </nav>
+</header>
+
+<!-- LIÇÃO 1 -->
+<section class="licao" id="licao-1">
+  <div class="teoria">
+    <div class="tag">Lição 1</div>
+    <h2>Um neurônio aprendendo uma porta lógica</h2>
+    <button class="ouvir" data-ouvir="1">Ouvir a professora</button>
+    <p>Um neurônio recebe duas entradas, <code>x1</code> e <code>x2</code>. Ele multiplica cada uma por um <b>peso</b>, soma um <b>bias</b> e passa o resultado pela <b>sigmoid</b>, que devolve um número entre 0 e 1.</p>
+    <p class="mono">saída = sigmoid(w1·x1 + w2·x2 + b)</p>
+    <p>A tabela mostra o que o neurônio responde para cada combinação de entradas. A <b>perda</b> mede o tamanho do erro: quanto menor, melhor.</p>
+    <p>Mexa nos pesos à mão e tente acertar. Depois clique em <b>Treinar sozinho</b> e veja o gradiente descendente fazer o mesmo que você, só que mais rápido.</p>
+    <div class="desafio"><b>Desafio:</b> escolha a porta XOR e treine. Por que a perda não chega perto de zero? A resposta está na lição 2.</div>
+  </div>
+  <div class="lab">
+    <div class="ctrl"><label for="l1porta">Porta lógica</label>
+      <select id="l1porta"><option value="and">AND (as duas = 1)</option><option value="or">OR (pelo menos uma = 1)</option><option value="xor">XOR (diferentes)</option></select><span></span></div>
+    <div class="ctrl"><label for="l1w1">Peso w1</label><input type="range" id="l1w1" min="-10" max="10" step="0.1" value="1.5"><output id="l1w1o">1.5</output></div>
+    <div class="ctrl"><label for="l1w2">Peso w2</label><input type="range" id="l1w2" min="-10" max="10" step="0.1" value="-0.5"><output id="l1w2o">-0.5</output></div>
+    <div class="ctrl"><label for="l1b">Bias b</label><input type="range" id="l1b" min="-10" max="10" step="0.1" value="0"><output id="l1bo">0.0</output></div>
+    <div class="vis">
+      <figure><canvas id="l1rede" width="300" height="300"></canvas><figcaption>A rede: as linhas são os pesos</figcaption></figure>
+      <figure><canvas id="l1mapa" width="300" height="300"></canvas><figcaption>Mapa de decisão: onde ela responde 1</figcaption></figure>
+    </div>
+    <div class="legenda"><span class="leg"><i style="background:var(--signal)"></i>peso positivo</span><span class="leg"><i style="background:var(--error)"></i>peso negativo</span>linha grossa = peso forte</div>
+    <div class="tbl"><table><thead><tr><th>x1</th><th>x2</th><th>esperado</th><th>saída</th><th>resultado</th></tr></thead><tbody id="l1tab"></tbody></table></div>
+    <div class="btns"><button class="prim" id="l1treinar">Treinar sozinho</button><button id="l1zerar">Pesos aleatórios</button><span class="status" id="l1status"></span></div>
+    <canvas class="chart" id="l1graf"></canvas><div class="cap">Perda ao longo do treino</div>
+  </div>
+</section>
+
+<!-- LIÇÃO 2 -->
+<section class="licao" id="licao-2">
+  <div class="teoria">
+    <div class="tag">Lição 2</div>
+    <h2>Por que precisamos de uma camada oculta</h2>
+    <button class="ouvir" data-ouvir="2">Ouvir a professora</button>
+    <p>No XOR, a resposta é 1 quando as entradas são <b>diferentes</b>. Se você desenhar os 4 pontos num plano, não existe uma reta que separe os "1" dos "0". Um neurônio sozinho só sabe traçar uma reta.</p>
+    <p>A solução é colocar uma <b>camada oculta</b> com vários neurônios entre a entrada e a saída. Cada um traça a sua reta, e o neurônio de saída combina todas.</p>
+    <p>Para ajustar os pesos de dentro, a rede usa a <b>backpropagation</b>: ela pega o erro da saída e o "propaga para trás", descobrindo quanto cada peso contribuiu para ele.</p>
+    <div class="desafio"><b>Desafio:</b> treine com 2 neurônios ocultos várias vezes. Às vezes a rede fica presa num erro alto, num <b>mínimo local</b>. Com 4 ou 8 neurônios isso acontece menos. Por quê?</div>
+  </div>
+  <div class="lab">
+    <div class="ctrl"><label for="l2h">Neurônios ocultos</label><input type="range" id="l2h" min="2" max="8" step="1" value="4"><output id="l2ho">4</output></div>
+    <div class="vis">
+      <figure><canvas id="l2rede" width="300" height="300"></canvas><figcaption>Entrada, camada oculta e saída</figcaption></figure>
+      <figure><canvas id="l2mapa" width="300" height="300"></canvas><figcaption>Mapa de decisão: veja a fronteira dobrar</figcaption></figure>
+    </div>
+    <div class="tbl"><table><thead><tr><th>x1</th><th>x2</th><th>esperado</th><th>saída</th><th>resultado</th></tr></thead><tbody id="l2tab"></tbody></table></div>
+    <div class="btns"><button class="prim" id="l2treinar">Treinar rede</button><button id="l2zerar">Pesos aleatórios</button><span class="status" id="l2status"></span></div>
+    <canvas class="chart" id="l2graf"></canvas><div class="cap">Perda ao longo de 10.000 épocas</div>
+  </div>
+</section>
+
+<!-- LIÇÃO 3 -->
+<section class="licao" id="licao-3">
+  <div class="teoria">
+    <div class="tag">Lição 3</div>
+    <h2>Uma rede que avisa quem não enxerga</h2>
+    <button class="ouvir" data-ouvir="3">Ouvir a professora</button>
+    <p>Agora a rede resolve um problema real. Ela recebe a <b>distância</b> até um obstáculo e se ele está <b>à frente</b> ou <b>ao lado</b>, e decide se deve falar "Cuidado!" para uma pessoa cega.</p>
+    <p>Ninguém programa a regra na rede. Ela vê 400 exemplos simulados e descobre a regra sozinha. Separamos 20% desses exemplos para <b>teste</b>: a rede nunca os vê no treino, então eles mostram se ela aprendeu de verdade ou só decorou.</p>
+    <p>Teste antes de treinar, com pesos aleatórios a rede chuta. Depois treine e teste de novo.</p>
+    <div class="desafio"><b>Desafio:</b> mude a regra para avisar a menos de 3,5 m, treine de novo e veja a rede aprender a regra nova sem você mudar uma linha de código.</div>
+  </div>
+  <div class="lab">
+    <div class="ctrl"><label for="l3regra">Regra: avisar a menos de</label><input type="range" id="l3regra" min="1" max="4" step="0.5" value="2"><output id="l3regrao">2.0 m</output></div>
+    <div class="ctrl"><label for="l3dist">Distância</label><input type="range" id="l3dist" min="0" max="5" step="0.1" value="1.2"><output id="l3disto">1.2 m</output></div>
+    <div class="ctrl"><label for="l3pos">Posição</label><select id="l3pos"><option value="1">À frente</option><option value="0">Ao lado</option></select><span></span></div>
+    <div class="resposta" aria-live="polite">
+      <span class="status">Probabilidade de avisar</span>
+      <span class="big" id="l3prob">0.00</span>
+      <span class="fala" id="l3fala"></span>
+      <span class="status" id="l3certo"></span>
+    </div>
+    <canvas class="faixa" id="l3faixa"></canvas>
+    <div class="cap">Zona de perigo que a rede aprendeu. A linha tracejada é a regra certa e o marcador é a distância escolhida.</div>
+    <div class="btns"><button class="prim" id="l3treinar">Treinar rede</button><button id="l3zerar">Pesos aleatórios</button></div>
+    <div class="placar"><span>Época <b id="l3ep">0</b></span><span>Acerto no treino <b id="l3acTr">—</b></span><span>Acerto no teste <b id="l3acTe">—</b></span></div>
+    <canvas class="chart" id="l3graf"></canvas><div class="cap">Perda ao longo do treino</div>
+  </div>
+</section>
+
+<!-- LIÇÃO 4 -->
+<section class="licao" id="licao-4">
+  <div class="teoria">
+    <div class="tag">Lição 4</div>
+    <h2>Uma rede que reconhece imagens</h2>
+    <button class="ouvir" data-ouvir="4">Ouvir a professora</button>
+    <p>Para uma rede, uma imagem é só uma grade de números. Aqui cada desenho vira uma grade de <b>16 × 16 pixels</b>, ou seja, <b>256 entradas</b>, uma por pixel: 0 é branco e 1 é tinta.</p>
+    <p>A rede tem 24 neurônios ocultos e 3 saídas: <b>círculo</b>, <b>quadrado</b> e <b>triângulo</b>. Ela treina com 1.500 formas geradas por computador, cada uma com tamanho, posição e traço diferentes.</p>
+    <p>Depois do treino, olhe os <b>detectores</b>: cada quadradinho mostra os pesos de um neurônio oculto. Verde é onde ele "quer" tinta, vermelho é onde ele não quer. Ninguém desenhou isso; a rede inventou sozinha.</p>
+    <p>A câmera do app para quem não enxerga funciona com a mesma ideia, só que com fotos reais e redes maiores, as <b>redes convolucionais</b> (CNNs).</p>
+    <div class="desafio"><b>Desafio:</b> desenhe um círculo bem aberto, como a letra C, ou um quadrado torto. A rede erra? Pense no que faltou nos exemplos de treino. É o mesmo problema de um app que só viu fotos de dia e precisa funcionar à noite.</div>
+  </div>
+  <div class="lab">
+    <div class="dupla">
+      <div style="display:grid;gap:.5rem">
+        <canvas class="quadro" id="l4quadro" width="280" height="280" aria-label="Área para desenhar uma forma"></canvas>
+        <div class="btns">
+          <button id="l4limpar">Limpar</button>
+          <select id="l4exemplo" aria-label="Desenhar um exemplo"><option value="">Desenhar exemplo…</option><option value="0">Círculo</option><option value="1">Quadrado</option><option value="2">Triângulo</option></select>
+        </div>
+      </div>
+      <div style="display:grid;gap:.75rem;min-width:0">
+        <div class="status">Desenhe com o mouse ou o dedo</div>
+        <div class="barras" id="l4barras" aria-live="polite"></div>
+        <div style="display:flex;gap:.6rem;align-items:center"><canvas class="mini" id="l4visto" width="16" height="16"></canvas><span class="legenda">O que a rede vê: 16 × 16 = 256 números</span></div>
+      </div>
+    </div>
+    <div class="btns"><button class="prim" id="l4treinar">Treinar rede</button><button id="l4zerar">Pesos aleatórios</button><span class="status" id="l4status"></span></div>
+    <div class="placar"><span>Época <b id="l4ep">0</b> de 12</span><span>Acerto no teste <b id="l4ac">—</b></span></div>
+    <div class="legenda">Detectores aprendidos (8 dos 24 neurônios ocultos)</div>
+    <div class="filtros" id="l4filtros"></div>
+    <canvas class="chart" id="l4graf"></canvas><div class="cap">Perda ao longo do treino</div>
+  </div>
+</section>
+
+<footer>LabNeural · protótipo de estudo · as redes rodam no seu navegador, com o mesmo algoritmo do arquivo <code>rede_neural_do_zero.py</code>.</footer>
+</div>
+<aside class="prof-card" id="profCard" aria-label="Professora de IA">
+  <div class="prof-video"><div id="prof"></div><span class="prof-nome" id="profNome">Professora Clara</span><div class="prof-status" id="profStatus"></div></div>
+  <div class="prof-corpo">
+    <div class="balao" id="balao" aria-live="polite"></div>
+    <form id="formPerg"><input id="txtPerg" type="text" autocomplete="off" aria-label="Sua pergunta" placeholder="Pergunte à professora…"><button type="submit">Enviar</button></form>
+    <div class="prof-acoes">
+      <button type="button" class="mic" id="mic" aria-label="Falar com a professora"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+      <button type="button" class="prim" id="btnComecar">Começar aula</button>
+      <button type="button" class="leve" id="btnTrocarProf">Trocar professor</button>
+      <button type="button" class="leve" id="btnRecolher" aria-expanded="true">Recolher</button>
+    </div>
+  </div>
+</aside>
+</div>
+<script>
+// Mostra qualquer erro no balão da professora (no iPhone não dá para ver o console)
+(function(){function mostrar(m){var b=document.getElementById('balao');if(b){b.textContent='Erro: '+m;}}
+window.addEventListener('error',function(e){mostrar((e.message||'')+' '+(e.filename||'').split('/').pop()+':'+(e.lineno||''));});
+window.addEventListener('unhandledrejection',function(e){mostrar(String(e.reason&&e.reason.message||e.reason));});})();
+</script>
+</body>
+</html>
